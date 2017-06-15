@@ -657,6 +657,8 @@ def generate_atom_feeds(app):
                      id=post_url,
                      updated=post.update, published=post.date)
 
+        if not os.path.exists(os.path.dirname(feed_path)):
+            os.mkdir(os.path.dirname(feed_path))
         with open(feed_path, 'w') as out:
             feed_str = feed.to_string()
             try:
